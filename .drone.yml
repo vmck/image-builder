@@ -1,8 +1,8 @@
 kind: pipeline
-name: build image ($DRONE_COMMIT_BRANCH)
+name: build image
 
 steps:
-- name: build qemu image
+- name: build image
   image: vmck/vmck:0.0.2
   privileged: true
   volumes:
@@ -13,6 +13,7 @@ steps:
   - SCRIPT=/drone/src/scripts/$(echo $DRONE_COMMIT_BRANCH | cut -f1 -d'/').sh
   - ARCHIVE_TMP=/vmck-images/$IMAGE_NAME__tmp.tar.gz
   - ARCHIVE=/vmck-images/$IMAGE_NAME.tar.gz
+  - env
   - ls -al $SCRIPT
   - mkdir /tmp/img
   - /opt/vmck/contrib/build.py /tmp/$IMAGE_NAME --script $SCRIPT
