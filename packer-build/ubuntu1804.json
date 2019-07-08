@@ -1,0 +1,67 @@
+{
+  "_comment": "Build with `packer build ubuntu.json`",
+  "builders": [
+    {
+      "type": "qemu",
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz noapic ",
+        "file=/floppy/{{ user `preseed` }} ",
+        "debian-installer={{ user `locale` }} auto locale={{ user `locale` }} kbd-chooser/method=us ",
+        "hostname={{ user `hostname` }} ",
+        "fb=false debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP ",
+        "keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+        "passwd/user-fullname={{ user `ssh_fullname` }} ",
+        "passwd/user-password={{ user `ssh_password` }} ",
+        "passwd/user-password-again={{ user `ssh_password` }} ",
+        "passwd/username={{ user `ssh_username` }} ",
+        "initrd=/install/initrd.gz -- <enter>"
+      ],
+      "disk_size": "10000",
+      "floppy_files": [
+        "http/preseed.cfg"
+      ],
+      "headless": false,
+      "http_directory": "http",
+      "iso_checksum": "a2cb36dc010d98ad9253ea5ad5a07fd6b409e3412c48f1860536970b073c98f5",
+      "iso_checksum_type": "sha256",
+      "iso_urls": [
+        "http://cdimage.ubuntu.com/ubuntu/releases/18.04/release/ubuntu-18.04.2-server-amd64.iso"
+      ],
+      "output_directory": "output-{{ user `vm_name` }}",
+      "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
+      "ssh_password": "{{ user `ssh_password` }}",
+      "ssh_username": "{{ user `ssh_username` }}",
+      "ssh_wait_timeout": "10000s",
+      "format": "qcow2",
+      "net_device": "virtio-net-pci",
+      "disk_interface": "virtio",
+      "vm_name": "{{ user `vm_name` }}",
+      "qemuargs": [
+        [ "-m", "1024" ],
+        [ "-enable-kvm" ],
+        [ "-cpu", "host" ],
+        [ "-smp", "cpus=4"]
+      ]
+    }
+  ],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sleep 20",
+      "sudo apt update -q",
+      "sudo apt install -yq docker.io"
+    ]
+  }],
+ "variables": {
+    "locale": "en_US",
+    "preseed" : "preseed.cfg",
+    "hostname": "vmck",
+    "ssh_fullname": "vmck",
+    "ssh_password": "vmck",
+    "ssh_username": "vmck",
+    "vm_name": "ubuntu1804"
+  }
+}
