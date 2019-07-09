@@ -30,7 +30,7 @@
       "iso_urls": [
         "http://cdimage.ubuntu.com/ubuntu/releases/18.04/release/ubuntu-18.04.2-server-amd64.iso"
       ],
-      "output_directory": "output-{{ user `vm_name` }}",
+      "output_directory": "build",
       "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
