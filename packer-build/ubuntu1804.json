@@ -19,7 +19,7 @@
         "passwd/username={{ user `ssh_username` }} ",
         "initrd=/install/initrd.gz -- <enter>"
       ],
-      "disk_size": "10000",
+      "disk_size": "4096",
       "floppy_files": [
         "http/preseed.cfg"
       ],
@@ -43,7 +43,8 @@
         [ "-m", "1024" ],
         [ "-enable-kvm" ],
         [ "-cpu", "host" ],
-        [ "-smp", "cpus=4"]
+        [ "-smp", "cpus=4"],
+        [ "-machine", "accel=kvm"]
       ]
     }
   ],
