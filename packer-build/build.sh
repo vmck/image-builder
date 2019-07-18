@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/bash -ex
 
-sudo chmod 666 /dev/kvm  # it fails otherwise
-packer build $1
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+
+chmod 666 /dev/kvm  # it fails otherwise
+packer build -var "vm_name=$2" $1

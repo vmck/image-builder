@@ -23,14 +23,14 @@
       "floppy_files": [
         "http/preseed.cfg"
       ],
-      "headless": false,
+      "headless": true,
       "http_directory": "http",
       "iso_checksum": "a2cb36dc010d98ad9253ea5ad5a07fd6b409e3412c48f1860536970b073c98f5",
       "iso_checksum_type": "sha256",
       "iso_urls": [
         "http://cdimage.ubuntu.com/ubuntu/releases/18.04/release/ubuntu-18.04.2-server-amd64.iso"
       ],
-      "output_directory": "build",
+      "output_directory": "{{ user `output_directory` }}",
       "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
@@ -59,10 +59,11 @@
  "variables": {
     "locale": "en_US",
     "preseed" : "preseed.cfg",
-    "hostname": "vmck",
-    "ssh_fullname": "vmck",
-    "ssh_password": "vmck",
-    "ssh_username": "vmck",
+    "hostname": "vagrant",
+    "ssh_fullname": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_username": "vagrant",
+    "output_directory": "build",
     "vm_name": "ubuntu1804"
   }
 }
