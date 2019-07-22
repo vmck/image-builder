@@ -19,7 +19,7 @@
         "passwd/username={{ user `ssh_username` }} ",
         "initrd=/install/initrd.gz -- <enter>"
       ],
-      "disk_size": "4096",
+      "disk_size": "24576",
       "floppy_files": [
         "http/preseed.cfg"
       ],
@@ -31,10 +31,10 @@
         "http://cdimage.ubuntu.com/ubuntu/releases/18.04/release/ubuntu-18.04.2-server-amd64.iso"
       ],
       "output_directory": "{{ user `output_directory` }}",
-      "shutdown_command": "echo '{{ user `ssh_password` }}'|sudo -S shutdown -P now",
+      "shutdown_command": "sudo -S shutdown -P now",
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
-      "ssh_wait_timeout": "10000s",
+      "ssh_timeout": "1h",
       "format": "qcow2",
       "net_device": "virtio-net-pci",
       "disk_interface": "virtio",
@@ -43,7 +43,7 @@
         [ "-m", "1024" ],
         [ "-enable-kvm" ],
         [ "-cpu", "host" ],
-        [ "-smp", "cpus=4"],
+        [ "-smp", "cpus=1"],
         [ "-machine", "accel=kvm"]
       ]
     }
@@ -51,7 +51,6 @@
   "provisioners": [{
     "type": "shell",
     "inline": [
-      "sleep 20",
       "sudo apt update -q",
       "sudo apt install -yq docker.io"
     ]

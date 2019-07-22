@@ -3,13 +3,14 @@ name: build image
 
 steps:
 - name: build image
-  image: hashicorp/packer:light
+  image: hashicorp/packer:1.4.2
   privileged: true
   volumes:
   - name: vmck-images
     path: /drone/src/packer-build/vmck-images
   commands:
-  - apk add --update qemu qemu-system-x86_64 qemu-img
+  - apk add --update libvirt-daemon qemu qemu-system-x86_64 qemu-img
+  - addgroup $(whoami) libvirt
   - export PACKER_LOG=1
   - export IMAGE_NAME=imgbuild-"$(echo $DRONE_COMMIT_BRANCH | tr -s '/' '_')".qcow2
   - export ARCHIVE_TMP=packer-build/build/"$IMAGE_NAME"__tmp.tar.gz
