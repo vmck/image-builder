@@ -24,12 +24,12 @@ Install packer by following the [https://www.packer.io/intro/getting-started/ins
 ### Building your image:
 
 ```shell
-./packer-build/build ${PACKER_CONFIGURATION} ${VM_NAME}
+./packer-build/build ${PACKER_CONFIGURATION} --vm_name ${VM_NAME}
 ```
 
-This will build a vm using the given `PACKER_CONFIGURATION` with the name
-`VM_NAME` in `packer-build/build`. If you don't want to build a configuration
-from scrap, just modify the existing one `packer-build/ubuntu1804.json`.
+This will build a vm using the given `${PACKER_CONFIGURATION}` with the name
+`${VM_NAME}` in `packer-build/build`. If you don't want to build a configuration
+from scratch, just modify the existing one `packer-build/ubuntu1804.json`.
 
 - To choose what software to be installed modify `provisioners.inline`.
 - To change the disk size modify `builders.disk_size`
@@ -37,8 +37,12 @@ from scrap, just modify the existing one `packer-build/ubuntu1804.json`.
 ### Start your image
 
 ```shell
-./packer-build/start.sh ${VM_NAME}.qcow2
+./packer-build/start.sh ${VM_NAME}.qcow2 --ssh ${PORT} --detached
 ```
+
+It will start the image with the name `${VM_NAME}.qcow2` located in `packer-build/build` and
+allows you to connect with ssh on port `${PORT}`. --ssh argument is optional. --detached is
+optional and starts qemu in daemmonized form, not locking your terminal
 
 ### Toubleshooting
 
