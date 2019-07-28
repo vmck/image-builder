@@ -18,7 +18,7 @@ steps:
   - ./packer-build/build.sh --vm-name $IMAGE_NAME ubuntu1804.json
   - ./packer-build/start.sh $IMAGE_NAME --detached --ssh 6622
   - sleep 10
-  - sshpass -p 'vagrant' ssh vagrant@localhost -tt -o StrictHostKeyChecking=no -p 6622 'bash' < ./packer-build/ubuntu1804.sh
+  - sshpass -p 'vagrant' ssh vagrant@localhost -tt -o StrictHostKeyChecking=no -p 6622 'bash' < ./packer-build/test-ubuntu1804.sh
   - tar czvf $ARCHIVE_TMP -C packer-build/build $IMAGE_NAME
   - mv $ARCHIVE_TMP $ARCHIVE
 
