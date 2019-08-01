@@ -4,7 +4,11 @@ set -e
 
 # Tests
 echo "Hello world!"
-docker --version
+gcc --version
+make --version
+which ssh
+which tmux
+which xterm
 
 sudo shutdown 1
 
