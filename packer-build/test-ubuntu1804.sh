@@ -6,6 +6,10 @@ sudo shutdown 1
 
 # Tests
 echo "Hello world!"
-docker --version
+gcc --version
+make --version
+which ssh
+which tmux
+which xterm
 
 exit 0
