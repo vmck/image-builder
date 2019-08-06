@@ -19,7 +19,7 @@ On the `master` branch we're installing Docker on Ubuntu Bionic.
 ```shell
 sudo apt install qemu qemu-kvm
 ```
-Install packer by following the [https://www.packer.io/intro/getting-started/install.html](instructions)
+Install packer by following the [instructions](https://www.packer.io/intro/getting-started/install.html).
 
 ### Building your image:
 
@@ -41,7 +41,7 @@ from scratch, just modify the existing one `packer-build/ubuntu1804.json`.
 ```
 
 It will start the image with the name `${VM_NAME}.qcow2` located in `packer-build/build` and
-allows you to connect with ssh on port `${PORT}`. --ssh argument is optional. --detached is
+allows you to connect with ssh on port `${PORT}`. `--ssh` argument is optional. `--detached` is
 optional and starts qemu in daemmonized form, not locking your terminal
 
 ### Toubleshooting

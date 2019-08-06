@@ -1,2 +1,2 @@
-packer-build/packer_cache
-packer-build/build
+/packer-build/packer_cache
+/packer-build/build

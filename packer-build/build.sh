@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 PACKER_CONF=""
@@ -26,5 +24,7 @@ while (( "$#" )); do
       ;;
   esac
 done
+
+set -e
 
 exec packer build $NAME $PACKER_CONF

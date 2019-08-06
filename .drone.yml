@@ -9,7 +9,7 @@ steps:
   - name: vmck-images
     path: /drone/src/packer-build/vmck-images
   commands:
-  - apk add --update libvirt-daemon qemu qemu-system-x86_64 qemu-img sshpass openssh
+  - apk add --update libvirt-daemon qemu-system-x86_64 qemu-img sshpass openssh
   - addgroup $(whoami) libvirt
   - export PACKER_LOG=1
   - export IMAGE_NAME=imgbuild-"$(echo $DRONE_COMMIT_BRANCH | tr -s '/' '_')".qcow2
@@ -17,8 +17,8 @@ steps:
   - export ARCHIVE=packer-build/vmck-images/"$IMAGE_NAME".tar.gz
   - ./packer-build/build.sh --vm-name $IMAGE_NAME ubuntu1804.json
   - ./packer-build/start.sh $IMAGE_NAME --detached --ssh 6622
-  - sleep 10
-  - sshpass -p 'vagrant' ssh vagrant@localhost -tt -o StrictHostKeyChecking=no -p 6622 'bash' < ./packer-build/test-ubuntu1804.sh
+  - until sshpass -p 'vagrant' ssh vagrant@localhost -tt -o StrictHostKeyChecking=no -p 6622 'bash' < ./packer-build/test-ubuntu1804.sh; do sleep 1; done
+  - kill -9 $(pidof qemu-system-x86_64)
   - tar czvf $ARCHIVE_TMP -C packer-build/build $IMAGE_NAME
   - mv $ARCHIVE_TMP $ARCHIVE
 

@@ -43,8 +43,7 @@
         [ "-m", "1024" ],
         [ "-enable-kvm" ],
         [ "-cpu", "host" ],
-        [ "-smp", "cpus=1"],
-        [ "-machine", "accel=kvm"]
+        [ "-smp", "cpus=1"]
       ]
     }
   ],

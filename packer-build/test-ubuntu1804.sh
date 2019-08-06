@@ -2,10 +2,10 @@
 
 set -e
 
-sudo shutdown 1
-
 # Tests
 echo "Hello world!"
 docker --version
+
+sudo shutdown 1
 
 exit 0
