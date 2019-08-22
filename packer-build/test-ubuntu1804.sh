@@ -10,6 +10,4 @@ which ssh
 which tmux
 which xterm
 
-sudo shutdown 1
-
 exit 0
