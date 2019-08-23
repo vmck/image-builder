@@ -37,12 +37,14 @@ from scratch, just modify the existing one `packer-build/ubuntu1804.json`.
 ### Start your image
 
 ```shell
-./packer-build/start.sh ${VM_NAME}.qcow2 --ssh ${PORT} --detached
+./packer-build/start.sh ${VM_NAME}.qcow2 --ssh ${PORT} --detached --safe
 ```
 
 It will start the image with the name `${VM_NAME}.qcow2` located in `packer-build/build` and
-allows you to connect with ssh on port `${PORT}`. `--ssh` argument is optional. `--detached` is
-optional and starts qemu in daemmonized form, not locking your terminal
+allows you to connect with ssh on port `${PORT}`.
+- `--ssh ${PORT}` (optional) forwards ssh port from vm to the given `${PORT}` argument
+- `--detached` (optional) start qemu in daemmonized form, not locking your terminal
+- `--safe` (optional) create image that refers to an original image using Redirect-on-Write to avoid changing the original image.
 
 ### Toubleshooting
 

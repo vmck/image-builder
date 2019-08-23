@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build ubuntu.json`",
+  "_comment": "Build with `packer build ubuntu1804.json`",
   "builders": [
     {
       "type": "qemu",
@@ -49,11 +49,6 @@
   ],
   "provisioners": [
   {
-    "type": "file",
-    "source": "fstab",
-    "destination": "/tmp/fstab"
-  },
-  {
     "type": "shell",
     "inline": [
       "sudo apt-get update -qy",
@@ -62,9 +57,7 @@
       "sudo bash -c 'echo {{ user `vagrant_key` }} > /home/vagrant/.ssh/authorized_keys'",
       "sudo chown -R vagrant:vagrant /home/vagrant/.ssh",
       "sudo chmod 600 /home/vagrant/.ssh/authorized_keys",
-      "sudo chmod 700 /home/vagrant/.ssh",
-      "sudo mv /tmp/fstab /etc/fstab",
-      "sudo cat /etc/fstab"
+      "sudo chmod 700 /home/vagrant/.ssh"
     ]
   }],
  "variables": {
