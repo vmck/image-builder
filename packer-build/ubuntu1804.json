@@ -51,8 +51,8 @@
   {
     "type": "shell",
     "inline": [
-      "sudo apt-get update -qy",
-      "sudo apt-get install -yq build-essential tmux xterm openssh-server",
+      "sudo apt-get update -q",
+      "sudo apt-get install -yq build-essential unzip xterm tmux openssh-server",
       "sudo mkdir /home/vagrant/.ssh",
       "sudo bash -c 'echo {{ user `vagrant_key` }} > /home/vagrant/.ssh/authorized_keys'",
       "sudo chown -R vagrant:vagrant /home/vagrant/.ssh",
