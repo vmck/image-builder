@@ -57,7 +57,8 @@
       "sudo bash -c 'echo {{ user `vagrant_key` }} > /home/vagrant/.ssh/authorized_keys'",
       "sudo chown -R vagrant:vagrant /home/vagrant/.ssh",
       "sudo chmod 600 /home/vagrant/.ssh/authorized_keys",
-      "sudo chmod 700 /home/vagrant/.ssh"
+      "sudo chmod 700 /home/vagrant/.ssh",
+      "sudo chmod -x /etc/update-motd.d/*"
     ]
   }],
  "variables": {
