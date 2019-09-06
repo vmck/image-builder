@@ -3,24 +3,26 @@ name: build image
 
 steps:
 - name: build image
-  image: vmck/vmck:0.0.2
+  image: hashicorp/packer:1.4.2
   privileged: true
   volumes:
   - name: vmck-images
-    path: /vmck-images
+    path: /drone/src/packer-build/vmck-images
   commands:
-  - IMAGE_NAME=imgbuild-$(echo $DRONE_COMMIT_BRANCH | tr -s '/' '_').qcow2
-  - SCRIPT=/drone/src/scripts/$(echo $DRONE_COMMIT_BRANCH | cut -f1 -d'/').sh
-  - ARCHIVE_TMP=/vmck-images/$IMAGE_NAME__tmp.tar.gz
-  - ARCHIVE=/vmck-images/$IMAGE_NAME.tar.gz
-  - env
-  - ls -al $SCRIPT
-  - mkdir /tmp/img
-  - /opt/vmck/contrib/build.py /tmp/$IMAGE_NAME --script $SCRIPT
-  - tar czvf $ARCHIVE_TMP -C /tmp $IMAGE_NAME
+  - apk add --update libvirt-daemon qemu-system-x86_64 qemu-img sshpass openssh
+  - addgroup $(whoami) libvirt
+  - export PACKER_LOG=1
+  - export IMAGE_NAME=imgbuild-"$(echo $DRONE_COMMIT_BRANCH | tr -s '/' '_')".qcow2
+  - export ARCHIVE_TMP=packer-build/build/"$IMAGE_NAME"__tmp.tar.gz
+  - export ARCHIVE=packer-build/vmck-images/"$IMAGE_NAME".tar.gz
+  - ./packer-build/build.sh --vm-name $IMAGE_NAME ubuntu1804.json
+  - ./packer-build/start.sh $IMAGE_NAME --detached --safe --ssh 6622
+  - until sshpass -p 'vagrant' ssh vagrant@localhost -tt -o StrictHostKeyChecking=no -p 6622 'bash' < ./packer-build/test-ubuntu1804.sh; do sleep 1; done
+  - kill -9 $(pidof qemu-system-x86_64)
+  - tar czvf $ARCHIVE_TMP -C packer-build/build $IMAGE_NAME
   - mv $ARCHIVE_TMP $ARCHIVE
 
 volumes:
 - name: vmck-images
   host:
-      path: /opt/volumes/vmck-images
+    path: /opt/volumes/vmck-images
