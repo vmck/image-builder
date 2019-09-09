@@ -67,7 +67,7 @@
     ]
   }],
  "variables": {
-    "locale": "en_US",
+    "locale": "en_US.UTF-8",
     "preseed" : "preseed.cfg",
     "hostname": "vagrant",
     "ssh_fullname": "vagrant",
