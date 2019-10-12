@@ -24,12 +24,12 @@ Install packer by following the [instructions](https://www.packer.io/intro/getti
 ### Building your image:
 
 ```shell
-./packer-build/build ${PACKER_CONFIGURATION} --vm_name ${VM_NAME}
+./packer-build/build.sh ${PACKER_CONFIGURATION} --vm_name ${VM_NAME}
 ```
 
 This will build a vm using the given `${PACKER_CONFIGURATION}` with the name
 `${VM_NAME}` in `packer-build/build`. If you don't want to build a configuration
-from scratch, just modify the existing one `packer-build/ubuntu1804.json`.
+from scratch, just modify the install script `packer-build/install.sh`.
 
 - To choose what software to be installed modify `provisioners.inline`.
 - To change the disk size modify `builders.disk_size`
