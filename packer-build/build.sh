@@ -3,11 +3,16 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 PACKER_CONF=""
+options=()
 
 while (( "$#" )); do
   case "$1" in
     -n|--vm-name)
       NAME="-var vm_name=$2"
+      shift 2
+      ;;
+    --option)
+      options+="-var $2 "
       shift 2
       ;;
     --) # end argument parsing
@@ -27,4 +32,4 @@ done
 
 set -e
 
-exec packer build $NAME $PACKER_CONF
+exec packer build $NAME ${options[@]} $PACKER_CONF 
