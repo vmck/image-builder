@@ -24,7 +24,7 @@ Install packer by following the [instructions](https://www.packer.io/intro/getti
 ### Building your image:
 
 ```shell
-./packer-build/build.sh ${PACKER_CONFIGURATION} --vm_name ${VM_NAME}
+./packer-build/build.sh ${PACKER_CONFIGURATION} --option vm_name=${VM_NAME}
 ```
 
 This will build a vm using the given `${PACKER_CONFIGURATION}` with the name
