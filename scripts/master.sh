@@ -3,7 +3,7 @@
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
 apt-get install -yqq python3-pip python3-venv git curl unzip \
-    dnsutils iptables docker.io
+    dnsutils iptables docker.io vim
 
 df -h 2>&1
 apt-get clean
