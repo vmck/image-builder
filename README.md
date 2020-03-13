@@ -46,6 +46,8 @@ allows you to connect with ssh on port `${PORT}`.
 - `--detached` (optional) start qemu in daemmonized form, not locking your terminal
 - `--safe` (optional) create image that refers to an original image using Redirect-on-Write to avoid changing the original image.
 
+The username is ```vagrant``` and password is ```vagrant```.
+
 ### Toubleshooting
 
 If you get the error: `Could not access KVM kernel module: Permission denied`,
