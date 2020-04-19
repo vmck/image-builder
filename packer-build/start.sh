@@ -35,4 +35,4 @@ while (( "$#" )); do
   esac
 done
 
-exec qemu-system-x86_64 -enable-kvm -m 1024 -smp cpus=1 $SAFE --drive discard=unmap,detect-zeroes=unmap,file="build/$IMAGE" $DETACHED -netdev user,id=user -device virtio-net-pci,netdev=user $SSH
+exec qemu-system-x86_64 -display none -enable-kvm -m 1024 -smp cpus=1 $SAFE --drive discard=unmap,detect-zeroes=unmap,file="build/$IMAGE" $DETACHED -netdev user,id=user -device virtio-net-pci,netdev=user $SSH
