@@ -19,7 +19,7 @@ steps:
   - ./packer-build/start.sh $IMAGE_NAME --detached --safe --ssh 6622
   - until sshpass -p 'vagrant' ssh vagrant@localhost -tt -o StrictHostKeyChecking=no -p 6622 'bash' < ./packer-build/test-ubuntu1804.sh; do sleep 1; done
   - kill -9 $(pidof qemu-system-x86_64)
-  - mv $IMAGE_NAME $ARCHIVE
+  - mv packer-build/build/$IMAGE_NAME $ARCHIVE
 
 volumes:
 - name: vmck-images
