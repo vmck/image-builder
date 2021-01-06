@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
 # Apt database update
-apt update
+apt update 
 
-apt-get install -yq 
-
-apt install -yq
+apt install -yq \
     build-essential unzip xterm tmux openssh-server \
     wget curl coreutils                             \
     gcc-8                                           \
