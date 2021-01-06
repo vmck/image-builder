@@ -13,7 +13,7 @@ apt install -yq \
     imagemagick
 
 # all py packages json os pathlib recordclass subprocess sys
-sudo pip3 install -yq                       \
+sudo pip3 install -q                        \
     argparse                                \
     pathlib                                 \
     recordclass                             \
