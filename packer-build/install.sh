@@ -20,3 +20,5 @@ sudo pip3 install                           \
     pathlib                                 \
     recordclass \
     pillow
+
+wget https://static.dfilip.xyz/pc2020-tema3-checker.zip -O /home/vagrant/pc2020-tema3-checker.zip
