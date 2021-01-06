@@ -19,4 +19,4 @@ sudo pip3 install -q                        \
     recordclass                             \
     pillow
 
-wget -q https://static.dfilip.xyz/pc2020-tema3-checker.zip -O /home/vagrant/pc2020-tema3-checker.zip
+wget -q https://static.dfilip.xyz/pc2020-tema3-checker.zip -O /usr/lib/pc2020-tema3-checker.zip
