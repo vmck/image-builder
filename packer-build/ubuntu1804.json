@@ -57,7 +57,6 @@
     "type": "shell",
     "inline": [
       "sudo apt-get update -q",
-      "sudo apt-get upgrade -yq",
       "sudo /tmp/install.sh",
       "sudo mkdir /home/vagrant/.ssh",
       "sudo bash -c 'echo {{ user `vagrant_key` }} > /home/vagrant/.ssh/authorized_keys'",
