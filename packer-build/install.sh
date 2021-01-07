@@ -12,7 +12,6 @@ apt install -yq \
     make gdb valgrind                               \
     imagemagick
 
-# all py packages json os pathlib recordclass subprocess sys
 pip3 install -q                        \
     argparse                                \
     pathlib                                 \
