@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-export DEBIAN_FRONTEND=noninteractive
-
 # Apt database update
-apt update 
+apt update
 
 apt install -yq \
     build-essential unzip xterm tmux openssh-server \
@@ -15,7 +13,7 @@ apt install -yq \
     imagemagick
 
 # all py packages json os pathlib recordclass subprocess sys
-sudo pip3 install -q                        \
+pip3 install -q                        \
     argparse                                \
     pathlib                                 \
     recordclass                             \
