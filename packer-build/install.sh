@@ -6,7 +6,7 @@ apt update
 apt install -yq \
     build-essential unzip xterm tmux openssh-server \
     wget curl coreutils                             \
-    gcc-8                                           \
+    gcc.                                            \
     python3 python3-pip                             \
     perl                                            \
     make gdb valgrind                               \
