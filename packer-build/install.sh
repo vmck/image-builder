@@ -12,7 +12,7 @@ apt install -yq \
     make gdb valgrind                               \
     imagemagick
 
-pip3 install -q                        \
+pip3 install -q                         \
     argparse                                \
     pathlib                                 \
     recordclass                             \
