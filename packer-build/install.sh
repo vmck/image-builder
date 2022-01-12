@@ -12,6 +12,8 @@ apt install -yq \
     make gdb valgrind                               \
     imagemagick
 
+python3 -m pip install --upgrade pip
+
 pip3 install -q                         \
     argparse                                \
     pathlib                                 \
