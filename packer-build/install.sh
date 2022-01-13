@@ -20,4 +20,5 @@ pip3 install -q                         \
     recordclass                             \
     pillow
 
+# That was updated
 wget -q https://static.dfilip.xyz/pc2021-tema3-checker.zip -O /usr/lib/pc2021-tema3-checker.zip
