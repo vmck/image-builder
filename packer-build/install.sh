@@ -8,4 +8,4 @@ apt install -yq \
     wget curl coreutils                             \
     gcc make
 
-echo "tom ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+echo "vagrant ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
